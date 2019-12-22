@@ -7,6 +7,21 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor() { }
+
+  successCallback(result) {
+    console.log(result); // true - enabled, false - disabled
+  }
+ 
+  errorCallback(error) {
+    console.log(error);
+  }
+
+  //Funcion que se ejecuta cada vez que se muestra la vista
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter');
+    //Funcion que permite o no la captura de screenshots... disable no deja y enable si
+    (<any>window).plugins.preventscreenshot.disable((a) => this.successCallback(a), (b) => this.errorCallback(b));
+  }
 
 }

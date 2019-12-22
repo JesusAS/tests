@@ -1,5 +1,7 @@
 {
   "name": "lock",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
