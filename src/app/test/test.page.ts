@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-test',
@@ -8,7 +9,14 @@ import { Router } from '@angular/router';
 })
 export class TestPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private platform: Platform
+  ) {
+    this.platform.resume.subscribe(async () => {
+      console.log('Resume event detected');
+    });
+  }
 
   ngOnInit() {
   }
@@ -20,12 +28,12 @@ export class TestPage implements OnInit {
   successCallback(result) {
     console.log(result); // true - enabled, false - disabled
   }
- 
+  
   errorCallback(error) {
     console.log(error);
   }
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad');
     (<any>window).plugins.preventscreenshot.enable((a) => this.successCallback(a), (b) => this.errorCallback(b));
   }

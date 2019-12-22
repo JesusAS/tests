@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -7,7 +8,11 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  go(){
+    this.router.navigateByUrl('/test');
+  }
 
   successCallback(result) {
     console.log(result); // true - enabled, false - disabled
@@ -23,5 +28,6 @@ export class Tab1Page {
     //Funcion que permite o no la captura de screenshots... disable no deja y enable si
     (<any>window).plugins.preventscreenshot.disable((a) => this.successCallback(a), (b) => this.errorCallback(b));
   }
+  
 
 }

@@ -1,4 +1,5 @@
-<ion-tabs>
+<!-- Funcion que se ejecuta cada vez que se cambia una tab -->
+<ion-tabs (ionTabsDidChange)="onTabsChanged($event)">
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="tab1">
