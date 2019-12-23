@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Three
+      Timer
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-item>
+    <ion-label> {{ minutes > 9 ? minutes : '0' + minutes  }}:{{ seconds > 9 ? seconds : '0' + seconds }}  </ion-label>
+  </ion-item>
+
+  <ion-button (click)="startTimer()">Start</ion-button>
+</ion-content>
